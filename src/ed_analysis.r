@@ -11,34 +11,31 @@
     # 22 - On Campus/Outpatient Hospital
 
   ## ED MBH Cohort - Place of Service
-  table(MBH_ED$Place_of_Service)    # 41 - 939
+  table(MBH_ED$Place_of_Service)    
   MBH_ED_41=filter(MBH_ED, Place_of_Service==41)
-  MBH_ED_41 %>% distinct(MEMBER_ID) %>% tally()     #267  (14% - 1,909 unique members in entire ED MBH Cohort)
-  MBH_ED_41cnt <- MBH_ED_41 %>% distinct(MEMBER_ID, DOS, Place_of_Service, DGN1)   #295 unique occurrances/claims for ambulance
-  table(MBH_ED_41cnt$DGN1)   #most common diagnosis is F29 - 250
-  MBH_ED_41cnt %>% distinct(MEMBER_ID) %>% tally()    #267 unique members use ED
-    # 2 times - 20 members
-    # 3 times - 1 member
-    # 4 times - 2 members  - DGN: F29 - Psychosis not due to substance
+  MBH_ED_41 %>% distinct(MEMBER_ID) %>% tally()     
+  MBH_ED_41cnt <- MBH_ED_41 %>% distinct(MEMBER_ID, DOS, Place_of_Service, DGN1)   
+  table(MBH_ED_41cnt$DGN1)   
+  MBH_ED_41cnt %>% distinct(MEMBER_ID) %>% tally()    
+   
   
-  sum(MBH_ED_41$PaidAmount)    # $92,490.7
-  sum(MBH_ED_41$AllowedAmount)   # $97,385.51
-  sum(MBH_ED_41$WithHoldAmount)   # 0.16
-  ## compare 41 vs. non 41
+  sum(MBH_ED_41$PaidAmount)    
+  sum(MBH_ED_41$AllowedAmount)   
+  sum(MBH_ED_41$WithHoldAmount)  
+
   
 #Risk Report:
   #History of Hypertension (Chronic Historical Hypertension)
   #Current PIH (Pregnancy Induced Hypertension)
 
 # Summarize all cardiovascular code DGN codes
-# PIH Code in Email
 
 
 #load t_claim and filter out pregnancy
 #append gender to pregnancy and filter out only females
   
 
-  
+
   
   cardio_codes <- paste(c('I21.01', 'I21.02', 'I21.09', 'I21.11', 'I21.19', 'I21.21', 'I21.29', 'I21.3',
                           'I21.4', 'I21.9', 'I21.A1', 'I21.A9', 'I22.0', 'I22.1', 'I22.2', 'I22.8', 'I22.9',
@@ -106,34 +103,34 @@
                               preg_20$PROC_1%in%PIH_codes | preg_20$PROC_2%in%PIH_codes | preg_20$PROC_3%in%PIH_codes | preg_20$PROC_4%in%PIH_codes)
 
   
-  table(preg_16$cardio)  #14
-  table(preg_16$HTN)     #14
-  table(preg_16$PIH)     #12,582
-  table(preg_16$cardio, preg_16$PIH)     #0
+  table(preg_16$cardio)  
+  table(preg_16$HTN)     
+  table(preg_16$PIH)    
+  table(preg_16$cardio, preg_16$PIH)     
   
   
-  table(preg_17$cardio)  #67
-  table(preg_17$HTN)     #59
-  table(preg_17$PIH)     #17,904
-  table(preg_17$cardio, preg_17$PIH)     #4
+  table(preg_17$cardio)  
+  table(preg_17$HTN)    
+  table(preg_17$PIH)    
+  table(preg_17$cardio, preg_17$PIH)    
   
   
-  table(preg_18$cardio)  #149
-  table(preg_18$HTN)     #143
-  table(preg_18$PIH)     #37,109
-  table(preg_18$cardio, preg_18$PIH)     #44
+  table(preg_18$cardio)  
+  table(preg_18$HTN)     
+  table(preg_18$PIH)     
+  table(preg_18$cardio, preg_18$PIH)    
   
   
-  table(preg_19$cardio)  #184
-  table(preg_19$HTN)     #146
-  table(preg_19$PIH)     #44,300
-  table(preg_19$cardio, preg_19$PIH)     #1
+  table(preg_19$cardio) 
+  table(preg_19$HTN)     
+  table(preg_19$PIH)    
+  table(preg_19$cardio, preg_19$PIH)     
   
   
-  table(preg_20$cardio)  #181
-  table(preg_20$HTN)     #177
-  table(preg_20$PIH)     #28,839
-  table(preg_20$cardio, preg_20$PIH)     #14
+  table(preg_20$cardio) 
+  table(preg_20$HTN)    
+  table(preg_20$PIH)     
+  table(preg_20$cardio, preg_20$PIH)    
   
   # Time difference between DOS cardio + cardio PIH (Absolute difference - before or after)
   
